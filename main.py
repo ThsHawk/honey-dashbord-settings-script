@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+from src.Service import Service
 
 def searchService(list, service):
     for i in range(len(list)):
@@ -30,7 +31,8 @@ def menu(settings):
     print("01 - List services")
     print("02 - Add service")
     print("03 - Del service")
-    print("04 - Exit")
+    print("05 - Edit service")
+    print("05 - Exit\n")
     
     opt = input("Select an option (default = 1): ")
     if not opt: opt = "1"
@@ -44,7 +46,8 @@ def menu(settings):
             print("\n")
         case "2":
             newService = dict(name="", desc="", href="", icon="")
-            newService["name"] = input("Service name: ")
+            new = Service()
+            new.setName()
             newService["desc"] = input("Service description: ")
             newService["href"] = input("Link to service (blank to default): ")
             if not newService["href"]: newService["href"] = newService["name"].lower()
@@ -55,9 +58,16 @@ def menu(settings):
         case "3":
             serviceName = input("Service name: ")
             serviceIndex = searchService(services, serviceName)
+            
+            print(services)
             services.pop(serviceIndex) if serviceIndex != -1 else print("Err: Service not found.\n")
             settings["services"] = services
         case "4":
+            serviceName = input("Service name: ")
+            serviceIndex = searchService(services, serviceName)
+            services.pop(serviceIndex) if serviceIndex != -1 else print("Err: Service not found.\n")
+            settings["services"] = services
+        case "5":
             return 0
         case _:
             print("Err: invalid option.")
