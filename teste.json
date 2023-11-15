@@ -47,6 +47,12 @@
 			"desc": "desc teste 2", 
 			"href": "Teste", 
 			"icon": ""
+		}, 
+		{
+			"name": "Teste 2", 
+			"desc": "f", 
+			"href": "ff", 
+			"icon": "img/preview/default.png"
 		}
 	]
 }
