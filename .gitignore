@@ -1,4 +1,4 @@
 #pycache folders
 __pycache__/
-#test file
-teste.json
+#JSON config files
+*.json

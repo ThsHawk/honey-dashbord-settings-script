@@ -13,45 +13,21 @@
 	}, 
 	"services": [
 		{
-			"name": "CalDav", 
-			"desc": "Simple CalDav server for calendar sync between various devices.", 
-			"href": "caldav", 
-			"icon": "img/preview/caldav.png"
-		}, 
-		{
 			"name": "Files", 
 			"desc": "Fancy file manager for the web.", 
 			"href": "files", 
-			"icon": "img/preview/files.png"
+			"icon": "img/preview/default.png"
 		}, 
 		{
-			"name": "Gallery", 
-			"desc": "Photo & video gallery syncable with multiple Android devices.", 
-			"href": "gallery", 
-			"icon": "img/preview/gallery.png"
+			"name": "Google", 
+			"desc": "Just Google.", 
+			"href": "https://google.com", 
+			"icon": "img/preview/default.png"
 		}, 
 		{
-			"name": "E-Mail", 
-			"desc": "Feature-rich, decentralized and secure E-Mail server.", 
-			"href": "mail", 
-			"icon": "img/preview/mail.png"
-		}, 
-		{
-			"name": "Music", 
-			"desc": "Beautiful, moody music streaming app.", 
-			"href": "music", 
-			"icon": "img/preview/music.png"
-		}, 
-		{
-			"name": "Teste", 
-			"desc": "desc teste 2", 
-			"href": "Teste", 
-			"icon": ""
-		}, 
-		{
-			"name": "Teste 2", 
-			"desc": "f", 
-			"href": "ff", 
+			"name": "Jellyfin", 
+			"desc": "Netflix replacement.", 
+			"href": "jellyfin", 
 			"icon": "img/preview/default.png"
 		}
 	]
