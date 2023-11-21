@@ -2,3 +2,4 @@
 __pycache__/
 #JSON config files
 *.json
+*.conf
