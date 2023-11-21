@@ -28,6 +28,18 @@ class DatabaseHandler():
         except Exception as err:
             print("Err")
 
+    def __init__(self, filePath):
+
+        file = openFile("r", filePath)
+        config = json.load(file)
+        file.close()
+        
+        try:
+            self.dbConn = mariadb.connect(**config)
+            self.db = self.dbConn.cursor()
+        except Exception as err:
+            print("Err")
+
     # ---------------------------
     # destructor
     # ---------------------------
@@ -37,7 +49,7 @@ class DatabaseHandler():
         self.dbConn.close()   
     
     # ---------------------------
-    # load services
+    # load services from database
     # ---------------------------
     def loadServices(self):
         self.db.execute("SELECT * FROM services")
@@ -55,5 +67,20 @@ class DatabaseHandler():
                 services.append(service.__dict__)
             return services
 
+    # ---------------------------
+    # insert services into database
+    # ---------------------------    
+    def insertServices(self, services):
+        for i in range(len(services)):
+            print(services[i]["name"])
+            self.db.execute("INSERT INTO services(name, brief, icon, href) VALUES (?, ?, ?, ?)",
+                            (services[i]["name"], services[i]["desc"], services[i]["icon"], services[i]["href"]))
+        self.dbConn.commit()
+
+    # ---------------------------
+    # flush all services on database
+    # ---------------------------     
+    def flush(self):
+        self.db.execute("DELETE FROM services")
 # -----------------------------------------------------------------------------------
 # -----------------------------------------------------------------------------------
