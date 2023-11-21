@@ -43,7 +43,8 @@ class Options():
         print("04 - Edit service")
         print("05 - Load from Database")
         print("06 - Load into Database")
-        print("07 - Exit\n")
+        print("07 - Flush Database")
+        print("08 - Exit\n")
         
         opt = input("Select an option (default = 1): ")
         if not opt: opt = "1"
@@ -64,6 +65,8 @@ class Options():
             case "6":
                 self.dbInsert()
             case "7":
+                self.dbFlush()
+            case "8":
                 return 0
             case _:
                 print("Err: invalid option.")
@@ -110,7 +113,21 @@ class Options():
     def dbInsert(self):
         db = DatabaseHandler(self.dbConfigPath)
         db.insertServices(self.services)
-
+    
+    # ---------------------------
+    # flush services
+    # ---------------------------
+    def dbFlush(self):
+        db = DatabaseHandler(self.dbConfigPath)
+        db.flush(self.services)
+    
+    # ---------------------------
+    # set path variables
+    # ---------------------------
+    def setPath(self, configPath, dbConfigPath):
+        self.configPath = configPath
+        self.dbConfigPath = dbConfigPath
+   
     # ---------------------------
     # linear search
     # ---------------------------

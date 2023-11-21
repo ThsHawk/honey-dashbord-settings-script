@@ -15,19 +15,6 @@ class DatabaseHandler():
     # ---------------------------
     # constructor
     # --------------------------- 
-    def __init__(self):
-
-        filePath = input("DB config file absolute path: ")
-        file = openFile("r", filePath)
-        config = json.load(file)
-        file.close()
-        
-        try:
-            self.dbConn = mariadb.connect(**config)
-            self.db = self.dbConn.cursor()
-        except Exception as err:
-            print("Err")
-
     def __init__(self, filePath):
 
         file = openFile("r", filePath)
@@ -73,7 +60,7 @@ class DatabaseHandler():
     def insertServices(self, services):
         for i in range(len(services)):
             print(services[i]["name"])
-            self.db.execute("INSERT INTO services(name, brief, icon, href) VALUES (?, ?, ?, ?)",
+            self.db.execute("REPLACE INTO services(name, brief, icon, href) VALUES (?, ?, ?, ?)",
                             (services[i]["name"], services[i]["desc"], services[i]["icon"], services[i]["href"]))
         self.dbConn.commit()
 

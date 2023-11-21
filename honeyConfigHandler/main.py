@@ -1,8 +1,6 @@
 # -----------------------------------------------------------------------------------
 # -----------------------------------------------------------------------------------
 
-import sys
-
 from modules.Options import Options
 
 # -----------------------------------------------------------------------------------
@@ -11,10 +9,9 @@ from modules.Options import Options
 # ---------------------------
 # main
 # ---------------------------              
-def main():
-    
-    if len(sys.argv) == 1:
-        system = Options()
-        while system.menu() != 0: pass
+def main():       
+    system = Options()
+    while system.menu() != 0: pass
+    exit()
     
 main()
